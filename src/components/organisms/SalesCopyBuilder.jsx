@@ -220,10 +220,10 @@ Get ${offer.name} now and start your transformation today.
                     return <p key={index} className="font-bold mb-2">{line.replace(/\*\*/g, '')}</p>;
                   }
                   if (line.startsWith('[') && line.endsWith(']')) {
-                    return (
+return (
                       <div key={index} className="my-6 text-center">
                         <div className="bg-gradient-to-r from-secondary to-amber-600 text-black font-bold py-3 px-6 rounded-lg inline-block">
-                          {line.replace(/[\[\]]/g, '')}
+                          {line.replace(/[[\]]/g, '')}
                         </div>
                       </div>
                     );
