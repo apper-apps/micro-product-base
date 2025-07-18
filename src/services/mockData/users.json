@@ -1,0 +1,9 @@
+[
+  {
+    "Id": 1,
+    "email": "creator@example.com",
+    "tier": "free",
+    "productsCreated": 0,
+    "joinDate": "2024-01-15"
+  }
+]

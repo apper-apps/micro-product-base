@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "userId": "1",
+    "name": "The 5-Minute Focus Formula",
+    "niche": "productivity",
+    "painPoint": "constant distractions",
+    "format": "pdf",
+    "promise": "Eliminate distractions and achieve laser focus in just 5 minutes",
+    "deliverable": "Step-by-step focus framework with distraction-blocking techniques",
+    "salesCopy": {
+      "socialPost": "Stop letting distractions steal your dreams. The 5-Minute Focus Formula gives you instant focus on command. ✨ Get it here: [link]",
+      "ctaOneLiner": "Transform chaos into focus in 5 minutes flat",
+      "miniSalesPage": "# The Focus Problem That's Costing You Everything\n\nEvery notification, every ping, every random thought is stealing your most precious resource: focused attention.\n\n## What if 5 minutes could change everything?\n\nThe 5-Minute Focus Formula isn't another productivity hack. It's a neuroscience-backed system that flips your focus switch from scattered to laser-sharp.\n\n### What You Get:\n- Instant focus activation technique\n- Distraction-proofing protocol\n- Emergency focus recovery method\n\n**Price: $19**\n\nStop losing your best ideas to distraction. Get focused. Get results. Get the formula."
+    },
+    "checklist": [
+      "Create the focus framework document",
+      "Write the distraction audit worksheet",
+      "Design the 5-minute timer protocol",
+      "Create social media teasers",
+      "Set up payment processing",
+      "Launch to your audience"
+    ],
+    "createdAt": "2024-01-15T10:30:00Z"
+  }
+]

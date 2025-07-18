@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "archetype": "Time Savior",
+    "title": "The 10-Minute Morning Miracle",
+    "description": "A micro-routine that transforms chaotic mornings into productive powerhouses",
+    "painCategory": "time management"
+  },
+  {
+    "Id": 2,
+    "archetype": "Recession Responder",
+    "title": "The Side Hustle Safety Net",
+    "description": "Quick-start guide to building recession-proof income streams",
+    "painCategory": "financial security"
+  },
+  {
+    "Id": 3,
+    "archetype": "Lead Magnet Slayer",
+    "title": "The Email List Awakener",
+    "description": "Turn cold subscribers into eager buyers with psychological triggers",
+    "painCategory": "email marketing"
+  },
+  {
+    "Id": 4,
+    "archetype": "Confidence Catalyst",
+    "title": "The Imposter Syndrome Antidote",
+    "description": "5-step framework to silence your inner critic and claim your expertise",
+    "painCategory": "self-doubt"
+  },
+  {
+    "Id": 5,
+    "archetype": "Content Creator",
+    "title": "The Viral Video Blueprint",
+    "description": "Psychology-backed formula for creating content that spreads like wildfire",
+    "painCategory": "content creation"
+  },
+  {
+    "Id": 6,
+    "archetype": "Decision Destroyer",
+    "title": "The Choice Simplifier",
+    "description": "End analysis paralysis with this instant decision-making framework",
+    "painCategory": "decision making"
+  }
+]
