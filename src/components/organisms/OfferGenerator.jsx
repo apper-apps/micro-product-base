@@ -213,14 +213,73 @@ const OfferGenerator = ({ onOfferGenerated, initialData = {} }) => {
               </div>
 
               <div className="pt-4 border-t border-accent/20">
-                <Button 
+<Button 
                   variant="secondary" 
                   className="w-full"
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      `${generatedOffer.name}\n\n${generatedOffer.promise}\n\n${generatedOffer.deliverable}`
-                    );
-                    toast.success("Offer copied to clipboard!");
+                  onClick={async () => {
+                    const textToCopy = `${generatedOffer.name}\n\n${generatedOffer.promise}\n\n${generatedOffer.deliverable}`;
+                    
+                    try {
+                      // Modern Clipboard API with permission check
+                      if (navigator.clipboard && window.isSecureContext) {
+                        await navigator.clipboard.writeText(textToCopy);
+                        toast.success("Offer copied to clipboard!");
+                        return;
+                      }
+                      
+                      // Fallback to legacy method
+                      const textArea = document.createElement('textarea');
+                      textArea.value = textToCopy;
+                      textArea.style.position = 'fixed';
+                      textArea.style.left = '-999999px';
+                      textArea.style.top = '-999999px';
+                      document.body.appendChild(textArea);
+                      textArea.focus();
+                      textArea.select();
+                      
+                      const successful = document.execCommand('copy');
+                      document.body.removeChild(textArea);
+                      
+                      if (successful) {
+                        toast.success("Offer copied to clipboard!");
+                      } else {
+                        throw new Error('Copy command failed');
+                      }
+                    } catch (error) {
+                      console.error('Copy failed:', error);
+                      
+                      // Final fallback - show the text for manual copying
+                      const textArea = document.createElement('textarea');
+                      textArea.value = textToCopy;
+                      textArea.style.position = 'fixed';
+                      textArea.style.left = '50%';
+                      textArea.style.top = '50%';
+                      textArea.style.transform = 'translate(-50%, -50%)';
+                      textArea.style.width = '80%';
+                      textArea.style.height = '200px';
+                      textArea.style.zIndex = '9999';
+                      textArea.style.background = '#1E1B4B';
+                      textArea.style.color = '#FFFFFF';
+                      textArea.style.border = '2px solid #7C3AED';
+                      textArea.style.borderRadius = '8px';
+                      textArea.style.padding = '16px';
+                      textArea.readOnly = true;
+                      
+                      document.body.appendChild(textArea);
+                      textArea.focus();
+                      textArea.select();
+                      
+                      toast.info("Please manually copy the selected text (Ctrl+C)", {
+                        autoClose: 5000
+                      });
+                      
+                      // Remove after 10 seconds
+                      setTimeout(() => {
+                        if (document.body.contains(textArea)) {
+                          document.body.removeChild(textArea);
+                        }
+                      }, 10000);
+                    }
                   }}
                 >
                   <ApperIcon name="Copy" size={16} className="mr-2" />
