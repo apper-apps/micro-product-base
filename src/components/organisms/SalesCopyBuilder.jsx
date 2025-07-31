@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Button from "@/components/atoms/Button";
+import { toast } from "react-toastify";
+import { copyToClipboard } from "@/utils/copyToClipboard";
 import ApperIcon from "@/components/ApperIcon";
 import Loading from "@/components/ui/Loading";
-import { toast } from "react-toastify";
+import Button from "@/components/atoms/Button";
 
 const SalesCopyBuilder = ({ currentOffer, currentStructure, onSalesCopyGenerated }) => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -107,7 +108,6 @@ Get ${offer.name} now and start your transformation today.
 
 *Join hundreds of people who've already transformed their lives*`;
   };
-
   if (!currentOffer) {
     return (
       <div className="text-center py-12">
@@ -149,12 +149,20 @@ Get ${offer.name} now and start your transformation today.
             </div>
 
             <div className="flex space-x-3">
-              <Button 
+<Button 
                 variant="outline"
                 size="sm"
-                onClick={() => {
-                  navigator.clipboard.writeText(salesCopy.socialPost);
-                  toast.success("Social post copied!");
+                onClick={async () => {
+                  const result = await copyToClipboard(salesCopy.socialPost);
+                  if (result.success) {
+                    if (result.method === 'manual-selection') {
+                      toast.info(result.message);
+                    } else {
+                      toast.success("Social post copied!");
+                    }
+                  } else {
+                    toast.error("Failed to copy social post. Please select and copy manually.");
+                  }
                 }}
               >
                 <ApperIcon name="Copy" size={14} className="mr-2" />
@@ -184,11 +192,19 @@ Get ${offer.name} now and start your transformation today.
 
             <div className="flex space-x-3">
               <Button 
-                variant="outline"
+variant="outline"
                 size="sm"
-                onClick={() => {
-                  navigator.clipboard.writeText(salesCopy.ctaOneLiner);
-                  toast.success("CTA copied!");
+                onClick={async () => {
+                  const result = await copyToClipboard(salesCopy.ctaOneLiner);
+                  if (result.success) {
+                    if (result.method === 'manual-selection') {
+                      toast.info(result.message);
+                    } else {
+                      toast.success("CTA copied!");
+                    }
+                  } else {
+                    toast.error("Failed to copy CTA. Please select and copy manually.");
+                  }
                 }}
               >
                 <ApperIcon name="Copy" size={14} className="mr-2" />
@@ -240,12 +256,20 @@ return (
             </div>
 
             <div className="flex space-x-3">
-              <Button 
+<Button 
                 variant="outline"
                 size="sm"
-                onClick={() => {
-                  navigator.clipboard.writeText(salesCopy.miniSalesPage);
-                  toast.success("Sales page copied!");
+                onClick={async () => {
+                  const result = await copyToClipboard(salesCopy.miniSalesPage);
+                  if (result.success) {
+                    if (result.method === 'manual-selection') {
+                      toast.info(result.message);
+                    } else {
+                      toast.success("Sales page copied!");
+                    }
+                  } else {
+                    toast.error("Failed to copy sales page. Please select and copy manually.");
+                  }
                 }}
               >
                 <ApperIcon name="Copy" size={14} className="mr-2" />
@@ -256,9 +280,9 @@ return (
 
           {/* Copy All */}
           <div className="text-center">
-            <Button 
+<Button 
               variant="secondary"
-              onClick={() => {
+              onClick={async () => {
                 const allCopy = `
 SOCIAL MEDIA POST:
 ${salesCopy.socialPost}
@@ -270,8 +294,16 @@ MINI SALES PAGE:
 ${salesCopy.miniSalesPage}
                 `.trim();
 
-                navigator.clipboard.writeText(allCopy);
-                toast.success("All sales copy copied to clipboard!");
+                const result = await copyToClipboard(allCopy);
+                if (result.success) {
+                  if (result.method === 'manual-selection') {
+                    toast.info(result.message);
+                  } else {
+                    toast.success("All sales copy copied to clipboard!");
+                  }
+                } else {
+                  toast.error("Failed to copy all content. Please select and copy manually.");
+                }
               }}
             >
               <ApperIcon name="Download" size={16} className="mr-2" />
